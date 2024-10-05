@@ -1,0 +1,144 @@
+@use "globals" as g;
+
+body {
+  width: 100%;
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: g.$main-background;
+  color: g.$white;
+  padding: 2rem 0;
+}
+
+.card {
+  display: grid;
+  grid-template-columns: 1fr;
+  grid-template-rows: 1fr auto;
+  border-radius: 10px;
+  width: min(350px, 85%);
+  margin-inline: auto;
+  background-color: g.$card-background;
+  overflow: hidden;
+
+  @include g.breakpoint-up(tab) {
+    grid-template-columns: 1fr 1fr;
+    width: min(1200px, 85%);
+  }
+}
+
+figure {
+  position: relative;
+
+  @include g.breakpoint-up(tab) {
+    order: 1;
+  }
+
+  &::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 100%;
+    background-color: g.$accent;
+    opacity: 0.6;
+  }
+}
+
+.main {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  text-align: center;
+  padding: 3rem;
+  gap: 1.5rem;
+
+  @include g.breakpoint-up(tab) {
+    text-align: left;
+  }
+
+  &__title {
+    font-family: g.$inter;
+    font-size: 24px;
+
+    &--color {
+      color: g.$accent;
+    }
+
+    @include g.breakpoint-up(pc) {
+      font-size: 32px;
+    }
+  }
+
+  &__para {
+    font-family: g.$lexend;
+    font-size: 13px;
+    color: g.$main-paragraph;
+    line-height: 1.5;
+    font-weight: 300;
+
+    @include g.breakpoint-up(pc) {
+      font-size: 16px;
+    }
+  }
+
+  ul {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+    padding: 1rem 0;
+    text-transform: uppercase;
+
+    @include g.breakpoint-up(tab) {
+      flex-direction: row;
+    }
+  }
+
+  li {
+    font-family: g.$lexend;
+    font-size: 10px;
+    font-weight: 300;
+    color: g.$stat-headings;
+
+    @include g.breakpoint-up(pc) {
+      font-size: 12px;
+    }
+
+    p:nth-child(1) {
+      font-family: g.$inter;
+      color: g.$white;
+      font-size: 18px;
+      font-weight: 700;
+      padding-bottom: 0.5rem;
+
+      @include g.breakpoint-up(pc) {
+        font-size: 24px;
+      }
+    }
+
+    p:nth-child(2) {
+      letter-spacing: 1px;
+    }
+  }
+}
+
+// FOOTER
+.attribution {
+  position: absolute;
+  font-size: 12px;
+  text-align: center;
+  top: 50%;
+  left: 95%;
+  transform: translate(-50%, -50%) rotate(90deg);
+  width: 100%;
+
+  @include g.breakpoint-up(tab) {
+    transform: translate(0, 0) rotate(0);
+    top: 95%;
+    left: 0;
+  }
+}
+.attribution a {
+  color: hsl(228, 45%, 60%);
+}
